@@ -1,30 +1,29 @@
 class FizzList:
     def __init__(self, x):
-        self.object_list = []
         self.eff_list = []
         self.bee_list = []
         self.reverse = False
         self.x = x
 
-    def add_object(self, fizz_object):
-        if fizz_object[0] == "F":
-            self.eff_list.append(fizz_object)
-        elif fizz_object[0] == "B":
-            self.bee_list.append(fizz_object)
-        elif fizz_object == "Reverse":
+    def add_object(self, rule_name):
+        if rule_name[0] == "F":
+            self.eff_list.append(rule_name)
+        elif rule_name[0] == "B":
+            self.bee_list.append(rule_name)
+        elif rule_name == "Reverse":
             self.reverse = True
 
-    def contains(self, name):
-        if name in self.object_list:
+    def contains(self, name: str):
+        if name in self.eff_list:
             return True
+        if name in self.bee_list:
+            return True
+        return False
 
     def format_output(self):
         output_list = []
-        output_list += self.eff_list
+        output_list += self.eff_list + self.bee_list
 
-        if self.contains("Fezz"):
-            output_list.append("Fezz")
-        output_list += self.bee_list
         if self.contains("Bong"):
             output_list = []
             if self.contains("Fezz"):
