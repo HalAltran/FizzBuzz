@@ -10,12 +10,13 @@ def list_contains_string(parent_list, string_to_match):
     return any(entry == string_to_match for entry in parent_list)
 
 
-def fizz_buzz(user_input_line):
+def fizz_buzz():
+    user_input = input("Enter only integers separated by commas: ")
 
-    input_entries = user_input_line.split(",")
+    input_entries = user_input.split(",")
 
     for x in range(1, 301):
-        fizz_list = FizzList()
+        fizz_list = FizzList(x)
 
         if list_contains_string(input_entries, str(3)) and multiple_of(x, 3):
             fizz_list.add_object(FizzObject("Fizz", False, False, 1))
@@ -33,10 +34,9 @@ def fizz_buzz(user_input_line):
 
         if list_contains_string(input_entries, str(17)) and multiple_of(x, 17):
             fizz_list.reverse = True
-            
+
         print("x = " + str(x) + ": " + fizz_list.format_output())
 
 
-user_input = input("Enter only integers separated by commas: ")
-print(user_input)
-fizz_buzz(user_input)
+if __name__ == "__main__":
+    fizz_buzz()
